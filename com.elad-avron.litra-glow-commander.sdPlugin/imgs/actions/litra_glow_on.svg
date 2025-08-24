@@ -1,0 +1,85 @@
+<svg width="144" height="144" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for LED panel glow -->
+    <radialGradient id="panelGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#fff8e1" stop-opacity="0.8"/>
+      <stop offset="80%" stop-color="#ffecb3" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffcc80" stop-opacity="0.2"/>
+    </radialGradient>
+    
+    <!-- LED surface gradient -->
+    <linearGradient id="ledSurface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#fff9c4"/>
+      <stop offset="70%" stop-color="#ffeb3b"/>
+      <stop offset="100%" stop-color="#ffc107"/>
+    </linearGradient>
+    
+    <!-- Outer glow filter -->
+    <filter id="outerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer glow effect -->
+  <rect x="20" y="15" width="104" height="104" rx="25" ry="25" fill="url(#panelGlow)" opacity="0.3"/>
+  
+  <!-- Base/Stand -->
+  <rect x="60" y="115" width="24" height="12" rx="2" fill="#2a2a2a"/>
+  <rect x="58" y="125" width="28" height="8" rx="3" fill="#1a1a1a"/>
+  <rect x="64" y="120" width="16" height="4" fill="#333"/>
+  
+  <!-- Main LED panel body -->
+  <rect x="32" y="25" width="80" height="80" rx="18" ry="18" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="2"/>
+  
+  <!-- Inner LED area (lit) -->
+  <rect x="38" y="31" width="68" height="68" rx="12" ry="12" fill="url(#ledSurface)" stroke="#ffb300" stroke-width="1" filter="url(#outerGlow)"/>
+  
+  <!-- LED grid pattern (bright) -->
+  <g fill="#ffffff" opacity="0.7">
+    <!-- Horizontal bright lines -->
+    <rect x="42" y="40" width="60" height="1"/>
+    <rect x="42" y="50" width="60" height="1"/>
+    <rect x="42" y="60" width="60" height="1"/>
+    <rect x="42" y="70" width="60" height="1"/>
+    <rect x="42" y="80" width="60" height="1"/>
+    <rect x="42" y="90" width="60" height="1"/>
+    
+    <!-- Vertical bright lines -->
+    <rect x="50" y="35" width="1" height="60"/>
+    <rect x="60" y="35" width="1" height="60"/>
+    <rect x="70" y="35" width="1" height="60"/>
+    <rect x="80" y="35" width="1" height="60"/>
+    <rect x="90" y="35" width="1" height="60"/>
+  </g>
+  
+  <!-- Bright LED spots -->
+  <g fill="#ffffff" opacity="0.8">
+    <circle cx="50" cy="45" r="1"/>
+    <circle cx="65" cy="45" r="1"/>
+    <circle cx="80" cy="45" r="1"/>
+    <circle cx="95" cy="45" r="1"/>
+    <circle cx="50" cy="65" r="1"/>
+    <circle cx="80" cy="65" r="1"/>
+    <circle cx="95" cy="65" r="1"/>
+    <circle cx="50" cy="85" r="1"/>
+    <circle cx="65" cy="85" r="1"/>
+    <circle cx="80" cy="85" r="1"/>
+    <circle cx="95" cy="85" r="1"/>
+  </g>
+  
+  <!-- Brand logo area -->
+  <circle cx="72" cy="65" r="8" fill="#ffffff" opacity="0.3"/>
+  <text x="72" y="69" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#666">logi</text>
+  
+  <!-- Power indicator (on) -->
+  <circle cx="95" cy="40" r="2" fill="#4caf50"/>
+  
+  <!-- Connection point -->
+  <rect x="70" y="105" width="4" height="10" fill="#333"/>
+</svg>

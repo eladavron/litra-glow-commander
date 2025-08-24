@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>Toggle Light Settings</title>
+    <meta charset="utf-8" />
+    <script src="sdpi-components.js"></script>
+    <script src="commands.js"></script>
+</head>
+
+<body>
+    <sdpi-item id="select-lights" label="Select Lights">
+        <sdpi-checkbox-list setting="selectedLights" datasource="getLights">
+        </sdpi-checkbox-list>
+    </sdpi-item>
+</body>
+
+</html>

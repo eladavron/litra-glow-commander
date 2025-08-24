@@ -1,0 +1,51 @@
+{
+	"Name": "Litra-Glow Commander",
+	"Version": "0.1.0.0",
+	"Author": "Elad Avron",
+	"Actions": [
+		{
+			"Name": "Toggle",
+			"UUID": "com.elad-avron.litra-glow-commander.toggle",
+			"Icon": "imgs/litra_glow_off",
+			"Tooltip": "Toggles the state of the Litra Glow lights.",
+			"PropertyInspectorPath": "ui/toggle.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/litra_glow_off",
+					"TitleAlignment": "middle"
+				},
+				{
+					"Image": "imgs/litra_glow_on",
+					"TitleAlignment": "middle"
+				}
+			]
+		}
+	],
+	"Category": "Litra-Glow Commander",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"CodePath": "bin/plugin.js",
+	"Description": "Control Litra Glow lights from StreamDeck",
+	"Icon": "imgs/plugin/marketplace",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion": "6.5"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"UUID": "com.elad-avron.litra-glow-commander"
+}
