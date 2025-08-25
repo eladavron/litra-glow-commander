@@ -14,11 +14,11 @@
 			],
 			"States": [
 				{
-					"Image": "imgs/litra_glow_off",
+					"Image": "imgs/actions/litra_glow_off",
 					"TitleAlignment": "middle"
 				},
 				{
-					"Image": "imgs/litra_glow_on",
+					"Image": "imgs/actions/litra_glow_on",
 					"TitleAlignment": "middle"
 				}
 			]

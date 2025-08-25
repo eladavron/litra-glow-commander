@@ -1,8 +1,5 @@
-export type Light = {
-    sn: string;
-    name: string;
-}
+import { Device } from "litra";
 
 export type ActionSettings = {
-    selectedLights: Light[];
+    selectedLights: string[];
 };
