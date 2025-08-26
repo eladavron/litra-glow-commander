@@ -8,9 +8,9 @@ This project uses and builds upon the excellent [`litra`](https://github.com/tim
 Checked boxes are available features, unchecked are planned features
 
  - [x] Turn your Litra Glow on/off
- - [X] Configure multiple lights per action
+ - [x] Configure multiple lights per action
     - [ ] See which light is which by flashing it when selected
- - [ ] Adjust brightness and color temperature by 10% increments
+ - [x] Adjust brightness and color temperature by 10% increments
    - [ ] Control by how much to change the color and temperature
 
 

@@ -54,6 +54,38 @@
 					"TitleAlignment": "middle"
 				}
 			]
+		},
+		{
+			"Name": "Temperature Down",
+			"UUID": "com.elad-avron.litra-glow-commander.temperature-down",
+			"Icon": "imgs/actions/litra_glow_cool",
+			"Tooltip": "Decreases the temperature of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_cool",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Temperature Up",
+			"UUID": "com.elad-avron.litra-glow-commander.temperature-up",
+			"Icon": "imgs/actions/litra_glow_warm",
+			"Tooltip": "Increases the temperature of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_warm",
+					"TitleAlignment": "middle"
+				}
+			]
 		}
 	],
 	"Category": "Litra-Glow Commander",
