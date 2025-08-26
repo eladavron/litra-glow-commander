@@ -12,6 +12,7 @@ Checked boxes are available features, unchecked are planned features
    - [ ] See which light is which by flashing it when selected
  - [x] Adjust brightness and color temperature by 10% increments
    - [ ] Control by how much to change the color and temperature
+   - [ ] Create "set value" actions
 
 
 ## Credits
@@ -20,5 +21,6 @@ Checked boxes are available features, unchecked are planned features
 - [8ternity/litra-glow](https://github.com/8ternity/litra-glow/) - SVG Icons
 
 ## License
+
 
 MIT License. See [LICENSE](LICENSE) file.
