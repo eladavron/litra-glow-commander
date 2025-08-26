@@ -3,7 +3,7 @@ import { getLightBySerialNumber, sendLightsToUI } from "../global";
 import { getTemperatureInKelvin, getMaximumTemperatureInKelvinForDevice, setTemperatureInKelvin } from "litra";
 import { ActionSettings } from "../settings";
 
-@action({ UUID: "com.elad-avron.litra-glow-commander.temperature-up" })
+@action({ UUID: "com.eladavron.litra-glow-commander.temperature-up" })
 export class TemperatureUp extends SingletonAction {
 
     override onWillAppear(ev: WillAppearEvent): void | Promise<void> {

@@ -9,7 +9,7 @@ Checked boxes are available features, unchecked are planned features
 
  - [x] Turn your Litra Glow on/off
  - [x] Configure multiple lights per action
-    - [ ] See which light is which by flashing it when selected
+   - [ ] See which light is which by flashing it when selected
  - [x] Adjust brightness and color temperature by 10% increments
    - [ ] Control by how much to change the color and temperature
 
@@ -17,7 +17,7 @@ Checked boxes are available features, unchecked are planned features
 ## Credits
 
 - [timrogers/litra](https://github.com/timrogers/litra) — JavaScript control library for Litra lights
-- [8ternity/litra-glow](https://github.com/8ternity/litra-glow/) - SVG Assets (Icons)
+- [8ternity/litra-glow](https://github.com/8ternity/litra-glow/) - SVG Icons
 
 ## License
 

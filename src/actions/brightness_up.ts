@@ -3,7 +3,7 @@ import { getLightBySerialNumber, sendLightsToUI } from "../global";
 import { setBrightnessPercentage, getBrightnessInLumen, getMaximumBrightnessInLumenForDevice } from "litra";
 import { ActionSettings } from "../settings";
 
-@action({ UUID: "com.elad-avron.litra-glow-commander.brightness-up" })
+@action({ UUID: "com.eladavron.litra-glow-commander.brightness-up" })
 export class BrightnessUpAction extends SingletonAction {
 
     override onWillAppear(ev: WillAppearEvent): void | Promise<void> {

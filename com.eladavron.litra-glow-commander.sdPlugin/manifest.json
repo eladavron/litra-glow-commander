@@ -1,0 +1,115 @@
+{
+	"Name": "Litra-Glow Commander",
+	"Version": "0.0.0.1",
+	"Author": "Elad Avron",
+	"Actions": [
+		{
+			"Name": "Toggle",
+			"UUID": "com.eladavron.litra-glow-commander.toggle",
+			"Icon": "imgs/actions/litra_glow_off",
+			"Tooltip": "Toggles the state of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_off",
+					"TitleAlignment": "middle"
+				},
+				{
+					"Image": "imgs/actions/litra_glow_on",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Brightness Up",
+			"UUID": "com.eladavron.litra-glow-commander.brightness-up",
+			"Icon": "imgs/actions/litra_glow_plus",
+			"Tooltip": "Increases the brightness of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_plus",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Brightness Down",
+			"UUID": "com.eladavron.litra-glow-commander.brightness-down",
+			"Icon": "imgs/actions/litra_glow_minus",
+			"Tooltip": "Decreases the brightness of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_minus",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Temperature Down",
+			"UUID": "com.eladavron.litra-glow-commander.temperature-down",
+			"Icon": "imgs/actions/litra_glow_cool",
+			"Tooltip": "Decreases the temperature of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_cool",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Temperature Up",
+			"UUID": "com.eladavron.litra-glow-commander.temperature-up",
+			"Icon": "imgs/actions/litra_glow_warm",
+			"Tooltip": "Increases the temperature of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_warm",
+					"TitleAlignment": "middle"
+				}
+			]
+		}
+	],
+	"Category": "Litra-Glow Commander",
+	"CategoryIcon": "imgs/litra_glow_on",
+	"CodePath": "bin/plugin.js",
+	"Description": "Control Litra Glow lights from StreamDeck",
+	"Icon": "imgs/litra_glow_on",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion": "6.5"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "12"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"UUID": "com.eladavron.litra-glow-commander"
+}

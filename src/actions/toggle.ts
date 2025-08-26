@@ -3,7 +3,7 @@ import { getLightBySerialNumber, sendLightsToUI } from "../global";
 import { turnOn, turnOff, isOn } from "litra";
 import { ActionSettings } from "../settings";
 
-@action({ UUID: "com.elad-avron.litra-glow-commander.toggle" })
+@action({ UUID: "com.eladavron.litra-glow-commander.toggle" })
 export class ToggleAction extends SingletonAction {
     override onWillAppear(ev: WillAppearEvent): void | Promise<void> {
         streamDeck.logger.debug("Toggle action will appear", ev);
