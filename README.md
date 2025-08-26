@@ -6,14 +6,17 @@ This project uses and builds upon the excellent [`litra`](https://github.com/tim
 
 ## Features
 
-- Turn your Litra Glow on/off
-- Adjust brightness and color temperature
-- Configure multiple lights per toggle
+ - [x] Turn your Litra Glow on/off
+ - [X] Configure multiple lights per action
+    - [ ] See which light is which by flashing it when selected
+ - [ ] Adjust brightness and color temperature
+
 
 ## Credits
 
 - [timrogers/litra](https://github.com/timrogers/litra) — JavaScript control library for Litra lights
+- [8ternity/litra-glow](https://github.com/8ternity/litra-glow/) - SVG Assets (Icons)
 
 ## License
 
-To be determined. Please see future updates for license information.
+MIT License. See [LICENSE](LICENSE) file.
