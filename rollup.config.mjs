@@ -4,6 +4,7 @@ import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 import path from "node:path";
 import url from "node:url";
+import { exec } from "node:child_process";
 
 const isWatching = !!process.env.ROLLUP_WATCH;
 const sdPlugin = "com.eladavron.litra-glow-commander.sdPlugin";
@@ -42,6 +43,19 @@ const config = {
           fileName: "package.json",
           type: "asset",
           source: `{ "main": "plugin.js" }`
+        });
+      }
+    },
+    {
+      name: "npm-install-litra",
+      writeBundle() {
+        exec("npm install litra", { cwd: `${sdPlugin}/bin` }, (error, stdout, stderr) => {
+          if (error) {
+            console.error(`npm install error: ${error}`);
+            return;
+          }
+          if (stdout) console.log(stdout);
+          if (stderr) console.error(stderr);
         });
       }
     }

@@ -5,3 +5,4 @@ package-lock.json
 # Stream Deck files
 *.sdPlugin/bin
 *.sdPlugin/logs
+*.streamDeckPlugin
