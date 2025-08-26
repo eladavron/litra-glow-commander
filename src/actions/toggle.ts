@@ -10,7 +10,7 @@ export class ToggleAction extends SingletonAction {
         //Determine current state of selected lights
         const settings = ev.payload.settings;
         const selectedLights = settings.selectedLights as Array<string>;
-        const allOn = selectedLights.every(light => {
+        const allOn = selectedLights?.every(light => {
             const lightDevice = getLightBySerialNumber(light);
             if (!lightDevice) return true; //If a light isn't connected, ignore its status
             return isOn(lightDevice);
