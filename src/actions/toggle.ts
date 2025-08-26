@@ -1,14 +1,5 @@
-import streamDeck, {
-    action,
-    DidReceiveSettingsEvent,
-    JsonValue,
-    KeyDownEvent,
-    SendToPluginEvent,
-    SingletonAction,
-    WillAppearEvent
-} from "@elgato/streamdeck";
-import type { DataSourcePayload } from "../sdpi";
-import { getLights, devicesToItems, getLightBySerialNumber } from "../global";
+import streamDeck, { action, JsonValue, KeyDownEvent, SendToPluginEvent, SingletonAction, WillAppearEvent } from "@elgato/streamdeck";
+import { getLightBySerialNumber, sendLightsToUI } from "../global";
 import { turnOn, turnOff, isOn } from "litra";
 import { ActionSettings } from "../settings";
 
@@ -48,16 +39,7 @@ export class ToggleAction extends SingletonAction {
 
     override onSendToPlugin(ev: SendToPluginEvent<JsonValue, ActionSettings>): Promise<void> | void {
         streamDeck.logger.debug("Toggle action received message from PI", ev);
-        if (ev.payload instanceof Object && "event" in ev.payload && ev.payload.event === "getLights") {
-            streamDeck.ui.current?.sendToPropertyInspector({
-                event: "getLights",
-                items: devicesToItems(getLights())
-            } satisfies DataSourcePayload);
-        }
-    }
-
-    override onDidReceiveSettings(ev: DidReceiveSettingsEvent): Promise<void> | void {
-        streamDeck.logger.debug("Toggle action received settings", ev);
+        sendLightsToUI(ev);
     }
 }
 

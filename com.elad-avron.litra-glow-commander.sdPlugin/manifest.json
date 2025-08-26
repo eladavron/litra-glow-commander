@@ -6,9 +6,9 @@
 		{
 			"Name": "Toggle",
 			"UUID": "com.elad-avron.litra-glow-commander.toggle",
-			"Icon": "imgs/litra_glow_off",
-			"Tooltip": "Toggles the state of the Litra Glow lights.",
-			"PropertyInspectorPath": "ui/toggle.html",
+			"Icon": "imgs/actions/litra_glow_off",
+			"Tooltip": "Toggles the state of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
 			"Controllers": [
 				"Keypad"
 			],
@@ -19,6 +19,38 @@
 				},
 				{
 					"Image": "imgs/actions/litra_glow_on",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Brightness Up",
+			"UUID": "com.elad-avron.litra-glow-commander.brightness-up",
+			"Icon": "imgs/actions/litra_glow_plus",
+			"Tooltip": "Increases the brightness of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_plus",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Brightness Down",
+			"UUID": "com.elad-avron.litra-glow-commander.brightness-down",
+			"Icon": "imgs/actions/litra_glow_minus",
+			"Tooltip": "Decreases the brightness of the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_minus",
 					"TitleAlignment": "middle"
 				}
 			]
