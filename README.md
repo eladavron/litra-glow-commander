@@ -2,17 +2,26 @@
 
 A StreamDeck plugin to control your Logitech Litra Glow light.
 
-This project uses and builds upon the excellent [`litra`](https://github.com/timrogers/litra) package by [timrogers](https://github.com/timrogers). Many thanks to timrogers for their work and support!
+<img width="700" height="777" alt="image" src="https://github.com/user-attachments/assets/4a8235a8-be1d-4f65-8619-b1a4a6602432" />
+
+This project uses and builds upon the excellent [`litra`](https://github.com/timrogers/litra) package by [timrogers](https://github.com/timrogers).  
+Many thanks to timrogers for their work and support!
 
 ## Features
  - Turn your Litra Glow lights on/off
  - Configure multiple lights per action (lights flash when selected)
  - Adjust brightness and color temperature by 10% increments
-   
+
+See more in the [changelog](CHANGELOG.md).
+
 ## Credits
 
 - [timrogers/litra](https://github.com/timrogers/litra) — JavaScript control library for Litra lights
 - [8ternity/litra-glow](https://github.com/8ternity/litra-glow/) - SVG Icons
 
+## Special Thanks
+- [Richard Herman](https://github.com/GeekyEggo) from the [Elgato MArketplace Makers Discord](https://discord.gg/GehBUcu627)
+
 ## License
 MIT License. See [LICENSE](LICENSE) file.
+
