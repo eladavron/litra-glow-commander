@@ -1,14 +1,16 @@
-import streamDeck, { action, JsonValue, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
-import { getLightBySerialNumber, sendLightsToUI } from "../global";
+import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, JsonValue, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
+import { flashLight, getLightBySerialNumber, sendLightsToUI } from "../global";
 import { getTemperatureInKelvin, getMaximumTemperatureInKelvinForDevice, setTemperatureInKelvin } from "litra";
 import { ActionSettings } from "../settings";
 
 @action({ UUID: "com.eladavron.litra-glow-commander.temperature-up" })
 export class TemperatureUp extends SingletonAction {
+    currentSettings!: ActionSettings;
 
     override onWillAppear(ev: WillAppearEvent): void | Promise<void> {
         streamDeck.logger.debug("Toggle action will appear", ev);
-        //TODO: Determine current brightness level of selected lights and update button UI
+        const settings = ev.payload.settings;
+        this.currentSettings = settings as ActionSettings;
     }
 
     override async onKeyDown(ev: KeyDownEvent): Promise<void> {
@@ -34,6 +36,16 @@ export class TemperatureUp extends SingletonAction {
     override onSendToPlugin(ev: SendToPluginEvent<JsonValue, ActionSettings>): Promise<void> | void {
         streamDeck.logger.debug("Temperature Up action received message from PI", ev);
         sendLightsToUI(ev);
+    }
+
+    override onDidReceiveSettings(ev: DidReceiveSettingsEvent<JsonObject>): Promise<void> | void {
+        const prevSelected = (this.currentSettings?.selectedLights ?? []) as Array<string>;
+        const newSelected = (ev.payload.settings?.selectedLights ?? []) as Array<string>;
+        const diff = newSelected.find(light => !prevSelected.includes(light)) ?? prevSelected.find(light => !newSelected.includes(light));
+        if (diff) {
+            flashLight(diff, 2);
+        }
+        this.currentSettings = ev.payload.settings as ActionSettings;
     }
 }
 
