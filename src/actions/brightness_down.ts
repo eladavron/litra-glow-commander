@@ -19,6 +19,7 @@ export class BrightnessDownAction extends SingletonAction {
         streamDeck.logger.debug("Brightness Down action key down", ev);
         const settings = ev.payload.settings;
         const selectedLights = settings.selectedLights as Array<string>;
+        const increments = settings.increments as number;
         for (const selectedLight of selectedLights) {
             const light = getLightBySerialNumber(selectedLight);
             if (!light) {
@@ -28,7 +29,7 @@ export class BrightnessDownAction extends SingletonAction {
             const currentBrightness = getBrightnessInLumen(light);
             const maxBrightness = getMaximumBrightnessInLumenForDevice(light);
             const currentPercentage = Math.round(((currentBrightness / maxBrightness) * 100) / 10) * 10;
-            const newPercentage = Math.max(currentPercentage - 10, 0);
+            const newPercentage = Math.max(currentPercentage - increments, 0);
             const newValue = (maxBrightness / 100) * newPercentage;
             streamDeck.logger.debug(`Setting brightness of light ${selectedLight} from ${currentPercentage}% (${currentBrightness}lm) to ${newPercentage}% (${newValue}lm)`);
             setBrightnessPercentage(light, newPercentage);

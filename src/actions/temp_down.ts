@@ -1,6 +1,6 @@
 import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, JsonValue, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
 import { flashLight, getLightBySerialNumber, sendLightsToUI } from "../global";
-import { getTemperatureInKelvin, getMaximumTemperatureInKelvinForDevice, setTemperatureInKelvin } from "litra";
+import { getTemperatureInKelvin, getMaximumTemperatureInKelvinForDevice, setTemperatureInKelvin, getMinimumTemperatureInKelvinForDevice } from "litra";
 import { ActionSettings } from "../settings";
 
 @action({ UUID: "com.eladavron.litra-glow-commander.temperature-down" })
@@ -19,6 +19,7 @@ export class TemperatureDown extends SingletonAction {
         streamDeck.logger.debug("Brightness Down action key down", ev);
         const settings = ev.payload.settings;
         const selectedLights = settings.selectedLights as Array<string>;
+        const increments = settings.increments as number;
         for (const selectedLight of selectedLights) {
             const light = getLightBySerialNumber(selectedLight);
             if (!light) {
@@ -27,9 +28,10 @@ export class TemperatureDown extends SingletonAction {
             }
             const currentTemp = getTemperatureInKelvin(light);
             const maxTemp = getMaximumTemperatureInKelvinForDevice(light);
-            const currentPercentage = Math.round(((currentTemp / maxTemp) * 100) / 10) * 10;
-            const newPercentage = Math.max(currentPercentage - 10, 0);
-            const newTemp = Math.round(((maxTemp / 100) * newPercentage) / 100) * 100;
+            const minTemp = getMinimumTemperatureInKelvinForDevice(light);
+            const currentPercentage = ((currentTemp - minTemp) / (maxTemp - minTemp)) * 100;
+            const newPercentage = Math.max(currentPercentage - increments, 0);
+            const newTemp = Math.round(minTemp + ((maxTemp - minTemp) * (newPercentage / 100)));
             streamDeck.logger.debug(`Setting temperature of light ${selectedLight} from ${currentPercentage}% (${currentTemp}K) to ${newPercentage}% (${newTemp}K)`);
             setTemperatureInKelvin(light, newTemp);
         }

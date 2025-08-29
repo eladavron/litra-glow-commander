@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>Toggle Light Settings</title>
+    <meta charset="utf-8" />
+    <script src="sdpi-components.js"></script>
+</head>
+
+<body>
+    <sdpi-item label="Increments">
+        <sdpi-range min="0" max="100" step="5" default="10" setting="increments" showlabels>
+            <span slot="min">0%</span>
+            <span slot="max">100%</span>
+        </sdpi-range>
+    </sdpi-item>
+    <sdpi-item id="select-lights" label="Select Lights">
+        <sdpi-checkbox-list setting="selectedLights" datasource="getLights">
+        </sdpi-checkbox-list>
+    </sdpi-item>
+</body>
+
+</html>

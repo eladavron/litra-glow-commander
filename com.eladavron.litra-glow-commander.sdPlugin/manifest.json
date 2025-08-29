@@ -1,6 +1,6 @@
 {
 	"Name": "Litra-Glow Commander",
-	"Version": "0.0.0.2",
+	"Version": "0.0.0.3",
 	"Author": "Elad Avron",
 	"Actions": [
 		{
@@ -28,7 +28,7 @@
 			"UUID": "com.eladavron.litra-glow-commander.brightness-up",
 			"Icon": "imgs/actions/litra_glow_plus",
 			"Tooltip": "Increases the brightness of the selected Litra Glow light(s).",
-			"PropertyInspectorPath": "ui/select-lights.html",
+			"PropertyInspectorPath": "ui/increments.html",
 			"Controllers": [
 				"Keypad"
 			],
@@ -44,7 +44,7 @@
 			"UUID": "com.eladavron.litra-glow-commander.brightness-down",
 			"Icon": "imgs/actions/litra_glow_minus",
 			"Tooltip": "Decreases the brightness of the selected Litra Glow light(s).",
-			"PropertyInspectorPath": "ui/select-lights.html",
+			"PropertyInspectorPath": "ui/increments.html",
 			"Controllers": [
 				"Keypad"
 			],
@@ -60,7 +60,7 @@
 			"UUID": "com.eladavron.litra-glow-commander.temperature-down",
 			"Icon": "imgs/actions/litra_glow_cool",
 			"Tooltip": "Decreases the temperature of the selected Litra Glow light(s).",
-			"PropertyInspectorPath": "ui/select-lights.html",
+			"PropertyInspectorPath": "ui/increments.html",
 			"Controllers": [
 				"Keypad"
 			],
@@ -76,7 +76,7 @@
 			"UUID": "com.eladavron.litra-glow-commander.temperature-up",
 			"Icon": "imgs/actions/litra_glow_warm",
 			"Tooltip": "Increases the temperature of the selected Litra Glow light(s).",
-			"PropertyInspectorPath": "ui/select-lights.html",
+			"PropertyInspectorPath": "ui/increments.html",
 			"Controllers": [
 				"Keypad"
 			],

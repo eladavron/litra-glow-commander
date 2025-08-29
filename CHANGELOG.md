@@ -5,7 +5,11 @@
 - Set temperature to a specific value
 - More dynamic icons
 
-## v0.0.0.2 (Aug. 27th, 2025)
+## v0.0.0.3
+### Added
+- You can now customize the increments for brightness and temperature adjustment actions
+
+## v0.0.0.2
 ### Added
 - When selecting or deselecting lights in the settings for an action, the changed light will flash twice to show you which light it is.
 

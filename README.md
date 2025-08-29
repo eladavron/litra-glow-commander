@@ -10,14 +10,14 @@ Many thanks to timrogers for their work and support!
 ## Features
  - Turn your Litra Glow lights on/off
  - Configure multiple lights per action (lights flash when selected)
- - Adjust brightness and color temperature by 10% increments
+ - Adjust brightness and color temperature by custom increments
 
 See more in the [changelog](CHANGELOG.md).
 
 ## Credits
 
 - [timrogers/litra](https://github.com/timrogers/litra) — JavaScript control library for Litra lights
-- [8ternity/litra-glow](https://github.com/8ternity/litra-glow/) - SVG Icons
+- [8ternity/litra-glow](https://github.com/8ternity/litra-glow/) - Base SVG assets
 
 ## Special Thanks
 - [Richard Herman](https://github.com/GeekyEggo) from the [Elgato MArketplace Makers Discord](https://discord.gg/GehBUcu627)
