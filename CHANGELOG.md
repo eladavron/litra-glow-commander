@@ -1,13 +1,12 @@
 # Changelog
-
-## Planned Features
-- Set brightness to a specific value
-- Set temperature to a specific value
-- More dynamic icons
+## v0.0.0.4
+### Added
+- Display action value on icon
+- Set static temperature and brightness actions
 
 ## v0.0.0.3
 ### Added
-- You can now customize the increments for brightness and temperature adjustment actions
+- Customize the increments for brightness and temperature adjustment actions
 
 ## v0.0.0.2
 ### Added

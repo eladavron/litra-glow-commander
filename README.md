@@ -10,7 +10,7 @@ Many thanks to timrogers for their work and support!
 ## Features
  - Turn your Litra Glow lights on/off
  - Configure multiple lights per action (lights flash when selected)
- - Adjust brightness and color temperature by custom increments
+ - Adjust brightness and color temperature either by custom increments or to static values
 
 See more in the [changelog](CHANGELOG.md).
 
