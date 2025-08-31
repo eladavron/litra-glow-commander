@@ -11,7 +11,7 @@ export class SetTemperature extends SingletonAction {
         streamDeck.logger.debug("Set Temperature action will appear", ev);
         const settings = ev.payload.settings;
         this.currentSettings = settings as ActionSettings; //Store settings for diff logic
-        ev.action.setTitle(settings.showOnIcon ? `${settings.value}%` : "");
+        ev.action.setTitle(settings.showOnIcon ? `${settings.value ?? 50}%` : "");
     }
 
     override async onKeyDown(ev: KeyDownEvent): Promise<void> {
@@ -48,7 +48,7 @@ export class SetTemperature extends SingletonAction {
         if (diff) {
             flashLight(diff, 2);
         }
-        const value = (ev.payload.settings?.value ?? 0) as number;
+        const value = (ev.payload.settings?.value ?? 50) as number;
         ev.action.setTitle(ev.payload.settings?.showOnIcon ? `${value}%` : "");
         this.currentSettings = ev.payload.settings as ActionSettings;
     }
