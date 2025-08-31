@@ -35,7 +35,7 @@
 			"States": [
 				{
 					"Image": "imgs/actions/litra_glow_plus",
-					"TitleAlignment": "middle"
+					"TitleAlignment": "bottom"
 				}
 			]
 		},
@@ -51,7 +51,7 @@
 			"States": [
 				{
 					"Image": "imgs/actions/litra_glow_minus",
-					"TitleAlignment": "middle"
+					"TitleAlignment": "bottom"
 				}
 			]
 		},
@@ -67,7 +67,7 @@
 			"States": [
 				{
 					"Image": "imgs/actions/litra_glow_cool",
-					"TitleAlignment": "middle"
+					"TitleAlignment": "bottom"
 				}
 			]
 		},
@@ -83,7 +83,7 @@
 			"States": [
 				{
 					"Image": "imgs/actions/litra_glow_warm",
-					"TitleAlignment": "middle"
+					"TitleAlignment": "bottom"
 				}
 			]
 		}

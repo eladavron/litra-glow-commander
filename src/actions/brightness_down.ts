@@ -8,11 +8,10 @@ export class BrightnessDownAction extends SingletonAction {
     currentSettings!: ActionSettings;
 
     override onWillAppear(ev: WillAppearEvent): void | Promise<void> {
-        streamDeck.logger.debug("Toggle action will appear", ev);
-        //Store settings for diff logic
+        streamDeck.logger.debug("Brightness Down action will appear", ev);
         const settings = ev.payload.settings;
-        this.currentSettings = settings as ActionSettings;
-        //TODO: Determine current brightness level of selected lights and update button UI
+        this.currentSettings = settings as ActionSettings; //Store settings for diff logic
+        ev.action.setTitle(settings.showOnIcon ? `-${settings.increments}%` : "");
     }
 
     override async onKeyDown(ev: KeyDownEvent): Promise<void> {
@@ -48,6 +47,8 @@ export class BrightnessDownAction extends SingletonAction {
         if (diff) {
             flashLight(diff, 2);
         }
+        const increment = (ev.payload.settings?.increments ?? 0) as number;
+        ev.action.setTitle(ev.payload.settings?.showOnIcon ? `-${increment}%` : "");
         this.currentSettings = ev.payload.settings as ActionSettings;
     }
 }
