@@ -28,7 +28,7 @@
 			"UUID": "com.eladavron.litra-glow-commander.brightness-up",
 			"Icon": "imgs/actions/litra_glow_plus",
 			"Tooltip": "Increases the brightness of the selected Litra Glow light(s).",
-			"PropertyInspectorPath": "ui/increments.html",
+			"PropertyInspectorPath": "ui/set-increments.html",
 			"Controllers": [
 				"Keypad"
 			],
@@ -44,7 +44,7 @@
 			"UUID": "com.eladavron.litra-glow-commander.brightness-down",
 			"Icon": "imgs/actions/litra_glow_minus",
 			"Tooltip": "Decreases the brightness of the selected Litra Glow light(s).",
-			"PropertyInspectorPath": "ui/increments.html",
+			"PropertyInspectorPath": "ui/set-increments.html",
 			"Controllers": [
 				"Keypad"
 			],
@@ -60,7 +60,7 @@
 			"UUID": "com.eladavron.litra-glow-commander.temperature-down",
 			"Icon": "imgs/actions/litra_glow_cool",
 			"Tooltip": "Decreases the temperature of the selected Litra Glow light(s).",
-			"PropertyInspectorPath": "ui/increments.html",
+			"PropertyInspectorPath": "ui/set-increments.html",
 			"Controllers": [
 				"Keypad"
 			],
@@ -76,13 +76,45 @@
 			"UUID": "com.eladavron.litra-glow-commander.temperature-up",
 			"Icon": "imgs/actions/litra_glow_warm",
 			"Tooltip": "Increases the temperature of the selected Litra Glow light(s).",
-			"PropertyInspectorPath": "ui/increments.html",
+			"PropertyInspectorPath": "ui/set-increments.html",
 			"Controllers": [
 				"Keypad"
 			],
 			"States": [
 				{
 					"Image": "imgs/actions/litra_glow_warm",
+					"TitleAlignment": "bottom"
+				}
+			]
+		},
+		{
+			"Name": "Set Brightness",
+			"UUID": "com.eladavron.litra-glow-commander.set-brightness",
+			"Icon": "imgs/actions/litra_glow_brightness",
+			"Tooltip": "Sets the brightness of the selected Litra Glow light(s) to a specific value.",
+			"PropertyInspectorPath": "ui/set-value.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_brightness",
+					"TitleAlignment": "bottom"
+				}
+			]
+		},
+		{
+			"Name": "Set Temperature",
+			"UUID": "com.eladavron.litra-glow-commander.set-temperature",
+			"Icon": "imgs/actions/litra_glow_temperature",
+			"Tooltip": "Sets the temperature of the selected Litra Glow light(s) to a specific value.",
+			"PropertyInspectorPath": "ui/set-value.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/litra_glow_temperature",
 					"TitleAlignment": "bottom"
 				}
 			]
