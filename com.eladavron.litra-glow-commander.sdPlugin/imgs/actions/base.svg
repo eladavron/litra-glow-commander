@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<svg width="144" height="144" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Base/Stand -->
+ <!-- Main LED panel body -->
+ <!-- Inner LED area -->
+ <!-- Minus symbol -->
+ <!-- Power indicator (off) -->
+ <!-- Connection point -->
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect fill="#2a2a2a" height="12" id="svg_1" rx="2" width="24" x="60" y="115"/>
+  <rect fill="#1a1a1a" height="8" id="svg_2" rx="3" width="28" x="58" y="125"/>
+  <rect fill="#333" height="4" id="svg_3" width="16" x="64" y="120"/>
+  <rect fill="#000000" height="80" id="svg_4" rx="18" ry="18" stroke="#ffffff" stroke-width="2" width="80" x="32" y="25"/>
+  <rect fill="#1a1a1a" height="68" id="svg_5" rx="12" ry="12" stroke="#333" transform="matrix(1 0 0 1 0 0)" width="68" x="38" y="31"/>
+  <circle cx="95" cy="40" fill="#666" id="svg_8" r="2"/>
+  <rect fill="#333" height="10" id="svg_9" width="4" x="70" y="105"/>
+ </g>
+</svg>
