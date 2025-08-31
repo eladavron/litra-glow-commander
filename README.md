@@ -2,7 +2,8 @@
 
 A StreamDeck plugin to control your Logitech Litra Glow light.
 
-<img width="700" height="777" alt="image" src="https://github.com/user-attachments/assets/4a8235a8-be1d-4f65-8619-b1a4a6602432" />
+<img width="740" height="872" alt="image" src="https://github.com/user-attachments/assets/42da4afe-e7ce-4dc9-9ea7-42c6c26c9e5f" />
+
 
 This project uses and builds upon the excellent [`litra`](https://github.com/timrogers/litra) package by [timrogers](https://github.com/timrogers).  
 Many thanks to timrogers for their work and support!
@@ -24,4 +25,5 @@ See more in the [changelog](CHANGELOG.md).
 
 ## License
 MIT License. See [LICENSE](LICENSE) file.
+
 
