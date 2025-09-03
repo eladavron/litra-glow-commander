@@ -1,12 +1,12 @@
 {
 	"Name": "Litra-Glow Commander",
-	"Version": "0.0.0.4",
+	"Version": "0.0.0.5",
 	"Author": "Elad Avron",
 	"Actions": [
 		{
 			"Name": "Toggle",
 			"UUID": "com.eladavron.litra-glow-commander.toggle",
-			"Icon": "imgs/actions/litra_glow_off",
+			"Icon": "imgs/actions/toggle_outline",
 			"Tooltip": "Toggles the state of the selected Litra Glow light(s).",
 			"PropertyInspectorPath": "ui/select-lights.html",
 			"Controllers": [
@@ -26,7 +26,7 @@
 		{
 			"Name": "Brightness Up",
 			"UUID": "com.eladavron.litra-glow-commander.brightness-up",
-			"Icon": "imgs/actions/litra_glow_plus",
+			"Icon": "imgs/actions/brightness_outline",
 			"Tooltip": "Increases the brightness of the selected Litra Glow light(s).",
 			"PropertyInspectorPath": "ui/set-increments.html",
 			"Controllers": [
@@ -42,7 +42,7 @@
 		{
 			"Name": "Brightness Down",
 			"UUID": "com.eladavron.litra-glow-commander.brightness-down",
-			"Icon": "imgs/actions/litra_glow_minus",
+			"Icon": "imgs/actions/brightness_outline",
 			"Tooltip": "Decreases the brightness of the selected Litra Glow light(s).",
 			"PropertyInspectorPath": "ui/set-increments.html",
 			"Controllers": [
@@ -58,7 +58,7 @@
 		{
 			"Name": "Temperature Down",
 			"UUID": "com.eladavron.litra-glow-commander.temperature-down",
-			"Icon": "imgs/actions/litra_glow_cool",
+			"Icon": "imgs/actions/temperature_outline",
 			"Tooltip": "Decreases the temperature of the selected Litra Glow light(s).",
 			"PropertyInspectorPath": "ui/set-increments.html",
 			"Controllers": [
@@ -74,7 +74,7 @@
 		{
 			"Name": "Temperature Up",
 			"UUID": "com.eladavron.litra-glow-commander.temperature-up",
-			"Icon": "imgs/actions/litra_glow_warm",
+			"Icon": "imgs/actions/temperature_outline",
 			"Tooltip": "Increases the temperature of the selected Litra Glow light(s).",
 			"PropertyInspectorPath": "ui/set-increments.html",
 			"Controllers": [
@@ -90,7 +90,7 @@
 		{
 			"Name": "Set Brightness",
 			"UUID": "com.eladavron.litra-glow-commander.set-brightness",
-			"Icon": "imgs/actions/litra_glow_brightness",
+			"Icon": "imgs/actions/brightness_outline",
 			"Tooltip": "Sets the brightness of the selected Litra Glow light(s) to a specific value.",
 			"PropertyInspectorPath": "ui/set-value.html",
 			"Controllers": [
@@ -106,7 +106,7 @@
 		{
 			"Name": "Set Temperature",
 			"UUID": "com.eladavron.litra-glow-commander.set-temperature",
-			"Icon": "imgs/actions/litra_glow_temperature",
+			"Icon": "imgs/actions/temperature_outline",
 			"Tooltip": "Sets the temperature of the selected Litra Glow light(s) to a specific value.",
 			"PropertyInspectorPath": "ui/set-value.html",
 			"Controllers": [
@@ -121,10 +121,10 @@
 		}
 	],
 	"Category": "Litra-Glow Commander",
-	"CategoryIcon": "imgs/litra_glow_on",
+	"CategoryIcon": "imgs/logi_outline",
 	"CodePath": "bin/plugin.js",
 	"Description": "Control Litra Glow lights from StreamDeck",
-	"Icon": "imgs/litra_glow_on",
+	"Icon": "imgs/logi",
 	"SDKVersion": 2,
 	"Software": {
 		"MinimumVersion": "6.5"

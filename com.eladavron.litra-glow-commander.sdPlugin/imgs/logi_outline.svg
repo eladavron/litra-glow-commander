@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<svg width="144" height="144" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Base/Stand -->
+ <!-- Main LED panel body -->
+ <!-- Inner LED area (off) -->
+ <!-- LED grid pattern (off) -->
+ <!-- Brand logo area -->
+ <!-- Power indicator (off) -->
+ <!-- Connection point -->
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect fill="#ffffff" height="12" id="svg_1" rx="2" transform="matrix(1.2537 0 0 1.24937 -18.2723 -26.7009)" width="24" x="60" y="117.07"/>
+  <rect fill="#ffffff" height="8" id="svg_2" rx="3" transform="matrix(1.2537 0 0 1.24937 -18.2723 -26.7009)" width="28" x="58" y="127.07"/>
+  <rect fill="#ffffff" height="4" id="svg_3" transform="matrix(1.2537 0 0 1.24937 -18.2723 -26.7009)" width="16" x="64" y="122.07"/>
+  <rect fill="#ff0000" fill-opacity="0.01" height="80" id="svg_4" rx="18" ry="18" stroke="#ffffff" stroke-width="8" transform="matrix(1.2537 0 0 1.24937 -18.2723 -26.7009)" width="80" x="32" y="27.07"/>
+  <rect fill="#ffffff" height="10" id="svg_21" transform="matrix(1.2537 0 0 1.24937 -18.2723 -26.7009)" width="4" x="70" y="107.07"/>
+  <text fill="#ffffff" font-family="Arial, sans-serif" font-size="37.61" id="svg_22" stroke="#ffffff" text-anchor="middle" transform="matrix(1.2537 0 0 1.24937 -18.2723 -26.7009)" x="74.05" xml:space="preserve" y="78.33"/>
+  <ellipse cx="86.83" cy="51.46" fill="#ffffff" id="svg_6" rx="9.44" ry="9.44" stroke="#ffffff" transform="matrix(1.2537 0 0 1.24937 -18.2723 -26.7009)"/>
+ </g>
+</svg>

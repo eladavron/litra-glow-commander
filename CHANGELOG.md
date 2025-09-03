@@ -1,4 +1,8 @@
 # Changelog
+
+## v0.0.0.5
+- Improved assets and created category icons to comply with StreamDeck store guidelines.
+
 ## v0.0.0.4
 ### Added
 - Display action value on icon
