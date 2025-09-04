@@ -48,7 +48,7 @@ export class BrightnessUpAction extends SingletonAction {
             flashLight(diff, 2);
         }
         const increment = (ev.payload.settings?.increments ?? 10) as number;
-        ev.action.setTitle(ev.payload.settings?.showOnIcon ? `-${increment}%` : "");
+        ev.action.setTitle(ev.payload.settings?.showOnIcon ? `+${increment}%` : "");
         this.currentSettings = ev.payload.settings as ActionSettings;
     }
 }

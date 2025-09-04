@@ -5,6 +5,7 @@
 ### Fixed
 
 - Fixed "Temperature Up" and "Temperature Down" actions not working properly
+- Fixed "Increase Brightness" action label having `-` instead of `+`
 
 ## v0.0.0.5
 
