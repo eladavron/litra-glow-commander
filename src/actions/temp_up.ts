@@ -30,7 +30,8 @@ export class TemperatureUp extends SingletonAction {
             const minTemp = getMinimumTemperatureInKelvinForDevice(light);
             const currentPercentage = ((currentTemp - minTemp) / (maxTemp - minTemp)) * 100;
             const newPercentage = Math.max(currentPercentage + increments, 0);
-            const newTemp = Math.round(minTemp + ((maxTemp - minTemp) * (newPercentage / 100)));
+            let newTemp = minTemp + ((maxTemp - minTemp) * (newPercentage / 100));
+            newTemp = Math.min(Math.round(newTemp / 100) * 100, maxTemp);  //Round to nearest 100 without going over
             streamDeck.logger.debug(`Setting temperature of light ${selectedLight} from ${currentPercentage}% (${currentTemp}K) to ${newPercentage}% (${newTemp}K)`);
             setTemperatureInKelvin(light, newTemp);
         }
