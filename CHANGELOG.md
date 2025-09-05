@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.0.7
+
+No actual changes in this one, just bumped version because of a bad upload to the market.
+
 ## v0.0.0.6
 
 ### Fixed
