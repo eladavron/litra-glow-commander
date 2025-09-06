@@ -1,6 +1,6 @@
 {
-	"Name": "Litra-Glow Commander",
-	"Version": "0.0.0.7",
+	"Name": "Litra Glow Commander",
+	"Version": "1.0.0.0",
 	"Author": "Elad Avron",
 	"Actions": [
 		{
@@ -120,7 +120,7 @@
 			]
 		}
 	],
-	"Category": "Litra-Glow Commander",
+	"Category": "Litra Glow Commander",
 	"CategoryIcon": "imgs/logi_outline",
 	"CodePath": "bin/plugin.js",
 	"Description": "Control Litra Glow lights from StreamDeck",
@@ -143,5 +143,6 @@
 		"Version": "20",
 		"Debug": "enabled"
 	},
-	"UUID": "com.eladavron.litra-glow-commander"
+	"UUID": "com.eladavron.litra-glow-commander",
+	"URL": "https://github.com/eladavron/litra-glow-commander"
 }

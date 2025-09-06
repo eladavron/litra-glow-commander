@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.0.0.0
+
+🥳 Bumped to Version 1.0.0.0 now that the plugin has all of its originally planned features!
+
+### Added
+
+- Added the URL of the GitHub to the plugin config.
+
+### Changed
+
+- Renamed the package to "Litra Glow Commander" (without the hyphen)
+
 ## v0.0.0.7
 
 No actual changes in this one, just bumped version because of a bad upload to the market.
