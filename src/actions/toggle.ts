@@ -1,13 +1,14 @@
-import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, JsonValue, KeyDownEvent, SendToPluginEvent, SingletonAction, WillAppearEvent } from "@elgato/streamdeck";
+import streamDeck, { action, DidReceiveSettingsEvent, KeyDownEvent, SendToPluginEvent, SingletonAction, WillAppearEvent } from "@elgato/streamdeck";
+import { JsonValue } from "@elgato/utils";
 import { flashLight, getLightBySerialNumber, sendLightsToUI } from "../global";
 import { turnOn, turnOff, isOn } from "litra";
 import { ActionSettings, getActionSettings } from "../settings";
 
 @action({ UUID: "com.eladavron.litra-glow-commander.toggle" })
-export class ToggleAction extends SingletonAction {
+export class ToggleAction extends SingletonAction<ActionSettings> {
     currentSettings!: ActionSettings;
 
-    override async onWillAppear(ev: WillAppearEvent): Promise<void> {
+    override async onWillAppear(ev: WillAppearEvent<ActionSettings>): Promise<void> {
         streamDeck.logger.debug("Toggle action will appear", ev);
         //Determine current state of selected lights
         const settings = getActionSettings(ev.payload.settings);
@@ -28,7 +29,7 @@ export class ToggleAction extends SingletonAction {
         }
     }
 
-    override async onKeyDown(ev: KeyDownEvent): Promise<void> {
+    override async onKeyDown(ev: KeyDownEvent<ActionSettings>): Promise<void> {
         streamDeck.logger.debug("Toggle action key down", ev);
         const settings = getActionSettings(ev.payload.settings);
         const selectedLights = settings.selectedLights;
@@ -49,7 +50,7 @@ export class ToggleAction extends SingletonAction {
         sendLightsToUI(ev);
     }
 
-    override onDidReceiveSettings(ev: DidReceiveSettingsEvent<JsonObject>): Promise<void> | void {
+    override onDidReceiveSettings(ev: DidReceiveSettingsEvent<ActionSettings>): Promise<void> | void {
         //Determine which light was selected
         const prevSelected = (this.currentSettings?.selectedLights ?? []) as Array<string>;
         const settings = getActionSettings(ev.payload.settings);

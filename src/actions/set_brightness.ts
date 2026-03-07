@@ -1,13 +1,14 @@
-import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, JsonValue, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
+import streamDeck, { action, DidReceiveSettingsEvent, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
+import { JsonValue } from "@elgato/utils";
 import { flashLight, getLightBySerialNumber, sendLightsToUI } from "../global";
 import { getBrightnessInLumen, getMaximumBrightnessInLumenForDevice, setBrightnessPercentage }from "litra";
 import { ValueActionSettings, getValueActionSettings } from "../settings";
 
 @action({ UUID: "com.eladavron.litra-glow-commander.set-brightness" })
-export class SetBrightness extends SingletonAction {
+export class SetBrightness extends SingletonAction<ValueActionSettings> {
     currentSettings!: ValueActionSettings;
 
-    override async onWillAppear(ev: WillAppearEvent): Promise<void> {
+    override async onWillAppear(ev: WillAppearEvent<ValueActionSettings>): Promise<void> {
         streamDeck.logger.debug("Set Brightness action will appear", ev);
         const settings = getValueActionSettings(ev.payload.settings);
         if (JSON.stringify(ev.payload.settings ?? {}) !== JSON.stringify(settings)) {
@@ -18,7 +19,7 @@ export class SetBrightness extends SingletonAction {
         ev.action.setTitle(settings.showOnIcon ? `${settings.value}%` : "");
     }
 
-    override async onKeyDown(ev: KeyDownEvent): Promise<void> {
+    override async onKeyDown(ev: KeyDownEvent<ValueActionSettings>): Promise<void> {
         streamDeck.logger.debug("Set Brightness action key down", ev);
         const settings = getValueActionSettings(ev.payload.settings);
         const selectedLights = settings.selectedLights;
@@ -43,7 +44,7 @@ export class SetBrightness extends SingletonAction {
         sendLightsToUI(ev);
     }
 
-    override onDidReceiveSettings(ev: DidReceiveSettingsEvent<JsonObject>): Promise<void> | void {
+    override onDidReceiveSettings(ev: DidReceiveSettingsEvent<ValueActionSettings>): Promise<void> | void {
         const prevSelected = (this.currentSettings?.selectedLights ?? []) as Array<string>;
         const settings = getValueActionSettings(ev.payload.settings);
         const newSelected = settings.selectedLights;

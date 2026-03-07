@@ -1,13 +1,14 @@
-import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, JsonValue, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
+import streamDeck, { action, DidReceiveSettingsEvent, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
+import { JsonValue } from "@elgato/utils";
 import { flashLight, getLightBySerialNumber, sendLightsToUI } from "../global";
 import { getTemperatureInKelvin, getMaximumTemperatureInKelvinForDevice, setTemperatureInKelvin, getMinimumTemperatureInKelvinForDevice } from "litra";
 import { IncrementActionSettings, getIncrementActionSettings } from "../settings";
 
 @action({ UUID: "com.eladavron.litra-glow-commander.temperature-down" })
-export class TemperatureDown extends SingletonAction {
+export class TemperatureDown extends SingletonAction<IncrementActionSettings> {
     currentSettings!: IncrementActionSettings;
 
-    override async onWillAppear(ev: WillAppearEvent): Promise<void> {
+    override async onWillAppear(ev: WillAppearEvent<IncrementActionSettings>): Promise<void> {
         streamDeck.logger.debug("Temperature Down action will appear", ev);
         const settings = getIncrementActionSettings(ev.payload.settings);
         if (JSON.stringify(ev.payload.settings ?? {}) !== JSON.stringify(settings)) {
@@ -18,7 +19,7 @@ export class TemperatureDown extends SingletonAction {
         ev.action.setTitle(settings.showOnIcon ? `-${settings.increments}%` : "");
     }
 
-    override async onKeyDown(ev: KeyDownEvent): Promise<void> {
+    override async onKeyDown(ev: KeyDownEvent<IncrementActionSettings>): Promise<void> {
         streamDeck.logger.debug("Brightness Down action key down", ev);
         const settings = getIncrementActionSettings(ev.payload.settings);
         const selectedLights = settings.selectedLights;
@@ -46,7 +47,7 @@ export class TemperatureDown extends SingletonAction {
         sendLightsToUI(ev);
     }
 
-    override onDidReceiveSettings(ev: DidReceiveSettingsEvent<JsonObject>): Promise<void> | void {
+    override onDidReceiveSettings(ev: DidReceiveSettingsEvent<IncrementActionSettings>): Promise<void> | void {
         const prevSelected = (this.currentSettings?.selectedLights ?? []) as Array<string>;
         const settings = getIncrementActionSettings(ev.payload.settings);
         const newSelected = settings.selectedLights;

@@ -4,10 +4,17 @@ import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 import path from "node:path";
 import url from "node:url";
-import { exec } from "node:child_process";
+import { execSync } from "node:child_process";
 
 const isWatching = !!process.env.ROLLUP_WATCH;
 const sdPlugin = "com.eladavron.litra-glow-commander.sdPlugin";
+const runtimePackageJson = {
+  main: "plugin.js",
+  dependencies: {
+    "@elgato/streamdeck": "^2.0.0",
+    litra: "^4.5.1"
+  }
+};
 
 /** @type {import('rollup').RollupOptions} */
 const config = {
@@ -42,20 +49,16 @@ const config = {
         this.emitFile({
           fileName: "package.json",
           type: "asset",
-          source: `{ "main": "plugin.js" }`
+          source: `${JSON.stringify(runtimePackageJson, null, 2)}\n`
         });
       }
     },
     {
-      name: "npm-install-litra",
+      name: "npm-install-runtime-dependencies",
       writeBundle() {
-        exec("npm install litra", { cwd: `${sdPlugin}/bin` }, (error, stdout, stderr) => {
-          if (error) {
-            console.error(`npm install error: ${error}`);
-            return;
-          }
-          if (stdout) console.log(stdout);
-          if (stderr) console.error(stderr);
+        execSync("npm install --omit=dev", {
+          cwd: `${sdPlugin}/bin`,
+          stdio: "inherit"
         });
       }
     }

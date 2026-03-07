@@ -1,11 +1,12 @@
-import streamDeck, { JsonValue, SendToPluginEvent } from "@elgato/streamdeck";
+import streamDeck, { SendToPluginEvent } from "@elgato/streamdeck";
+import { JsonValue } from "@elgato/utils";
 import { findDevices, getNameForDevice, Device, toggle, DeviceType, isOn, turnOn, turnOff } from 'litra';
 import { DataSourcePayload, DataSourceResultItem } from "./sdpi";
 import { ActionSettings } from "./settings";
 
 export function sendLightsToUI(ev: SendToPluginEvent<JsonValue, ActionSettings>) {
     if (ev.payload instanceof Object && "event" in ev.payload && ev.payload.event === "getLights") {
-        streamDeck.ui.current?.sendToPropertyInspector({
+        void streamDeck.ui.sendToPropertyInspector({
             event: "getLights",
             items: devicesToItems(getLights())
         } satisfies DataSourcePayload);

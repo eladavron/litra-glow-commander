@@ -1,6 +1,12 @@
 
 # Changelog
 
+## v1.0.0.03
+
+### Fixed
+
+- Fixed compatibility with StreamDeck plugin manifest V3
+
 ## v1.0.0.2
 
 ### Fixed
