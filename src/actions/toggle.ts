@@ -39,7 +39,8 @@ export class ToggleAction extends SingletonAction<ActionSettings> {
                 streamDeck.logger.error("Light not found", selectedLight);
                 continue;
             }
-            const newState = !ev.payload.state;
+            const oldState = isOn(light);
+            const newState = !oldState;
             streamDeck.logger.info(`Turning ${newState ? "on" : "off"} light`, light);
             if (newState) turnOn(light); else turnOff(light);
         }
