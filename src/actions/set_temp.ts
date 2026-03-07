@@ -1,24 +1,28 @@
 import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, JsonValue, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
 import { flashLight, getLightBySerialNumber, sendLightsToUI } from "../global";
 import { getTemperatureInKelvin, getMaximumTemperatureInKelvinForDevice, setTemperatureInKelvin, getMinimumTemperatureInKelvinForDevice, Device }from "litra";
-import { ActionSettings } from "../settings";
+import { ValueActionSettings, getValueActionSettings } from "../settings";
 
 @action({ UUID: "com.eladavron.litra-glow-commander.set-temperature" })
 export class SetTemperature extends SingletonAction {
-    currentSettings!: ActionSettings;
+    currentSettings!: ValueActionSettings;
 
-    override onWillAppear(ev: WillAppearEvent): void | Promise<void> {
+    override async onWillAppear(ev: WillAppearEvent): Promise<void> {
         streamDeck.logger.debug("Set Temperature action will appear", ev);
-        const settings = ev.payload.settings;
-        this.currentSettings = settings as ActionSettings; //Store settings for diff logic
-        ev.action.setTitle(settings.showOnIcon ? `${settings.value ?? 50}%` : "");
+        const settings = getValueActionSettings(ev.payload.settings);
+        if (JSON.stringify(ev.payload.settings ?? {}) !== JSON.stringify(settings)) {
+            await ev.action.setSettings(settings);
+        }
+
+        this.currentSettings = settings;
+        ev.action.setTitle(settings.showOnIcon ? `${settings.value}%` : "");
     }
 
     override async onKeyDown(ev: KeyDownEvent): Promise<void> {
         streamDeck.logger.debug("Set Temperature action key down", ev);
-        const settings = ev.payload.settings;
-        const selectedLights = settings.selectedLights as Array<string>;
-        const value = settings.value as number;
+        const settings = getValueActionSettings(ev.payload.settings);
+        const selectedLights = settings.selectedLights;
+        const value = settings.value;
         for (const selectedLight of selectedLights) {
             const light = getLightBySerialNumber(selectedLight);
             if (!light) {
@@ -36,21 +40,21 @@ export class SetTemperature extends SingletonAction {
         }
     }
 
-    override onSendToPlugin(ev: SendToPluginEvent<JsonValue, ActionSettings>): Promise<void> | void {
+    override onSendToPlugin(ev: SendToPluginEvent<JsonValue, ValueActionSettings>): Promise<void> | void {
         streamDeck.logger.debug("Temperature Up action received message from PI", ev);
         sendLightsToUI(ev);
     }
 
     override onDidReceiveSettings(ev: DidReceiveSettingsEvent<JsonObject>): Promise<void> | void {
         const prevSelected = (this.currentSettings?.selectedLights ?? []) as Array<string>;
-        const newSelected = (ev.payload.settings?.selectedLights ?? []) as Array<string>;
+        const settings = getValueActionSettings(ev.payload.settings);
+        const newSelected = settings.selectedLights;
         const diff = newSelected.find(light => !prevSelected.includes(light)) ?? prevSelected.find(light => !newSelected.includes(light));
         if (diff) {
             flashLight(diff, 2);
         }
-        const value = (ev.payload.settings?.value ?? 50) as number;
-        ev.action.setTitle(ev.payload.settings?.showOnIcon ? `${value}%` : "");
-        this.currentSettings = ev.payload.settings as ActionSettings;
+        ev.action.setTitle(settings.showOnIcon ? `${settings.value}%` : "");
+        this.currentSettings = settings;
     }
 }
 

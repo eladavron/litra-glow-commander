@@ -1,4 +1,16 @@
+
 # Changelog
+
+## v1.0.0.2
+
+### Fixed
+
+- Fixed a bug where default values for actions would only affect the GUI and not the logic itself, causing actions to not work until their settings were opened and saved at least once.
+
+### Changed
+
+- The default values for all lights is now to be selected unless de-selected manually.
+- The default values for all actions is now to show their values on the icon.
 
 ## v1.0.0.1
 

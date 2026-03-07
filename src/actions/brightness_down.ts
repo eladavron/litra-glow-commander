@@ -1,24 +1,28 @@
 import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, JsonValue, KeyDownEvent, SingletonAction, SendToPluginEvent, WillAppearEvent } from "@elgato/streamdeck";
 import { flashLight, getLightBySerialNumber, sendLightsToUI } from "../global";
 import { setBrightnessPercentage, getBrightnessInLumen, getMaximumBrightnessInLumenForDevice,  getMinimumBrightnessInLumenForDevice, setBrightnessInLumen } from "litra";
-import { ActionSettings } from "../settings";
+import { IncrementActionSettings, getIncrementActionSettings } from "../settings";
 
 @action({ UUID: "com.eladavron.litra-glow-commander.brightness-down" })
 export class BrightnessDownAction extends SingletonAction {
-    currentSettings!: ActionSettings;
+    currentSettings!: IncrementActionSettings;
 
-    override onWillAppear(ev: WillAppearEvent): void | Promise<void> {
+    override async onWillAppear(ev: WillAppearEvent): Promise<void> {
         streamDeck.logger.debug("Brightness Down action will appear", ev);
-        const settings = ev.payload.settings;
-        this.currentSettings = settings as ActionSettings; //Store settings for diff logic
-        ev.action.setTitle(settings.showOnIcon ? `-${settings.increments ?? 10}%` : "");
+        const settings = getIncrementActionSettings(ev.payload.settings);
+        if (JSON.stringify(ev.payload.settings ?? {}) !== JSON.stringify(settings)) {
+            await ev.action.setSettings(settings);
+        }
+
+        this.currentSettings = settings;
+        ev.action.setTitle(settings.showOnIcon ? `-${settings.increments}%` : "");
     }
 
     override async onKeyDown(ev: KeyDownEvent): Promise<void> {
         streamDeck.logger.debug("Brightness Down action key down", ev);
-        const settings = ev.payload.settings;
-        const selectedLights = settings.selectedLights as Array<string>;
-        const increments = settings.increments as number;
+        const settings = getIncrementActionSettings(ev.payload.settings);
+        const selectedLights = settings.selectedLights;
+        const increments = settings.increments;
         for (const selectedLight of selectedLights) {
             const light = getLightBySerialNumber(selectedLight);
             if (!light) {
@@ -36,21 +40,21 @@ export class BrightnessDownAction extends SingletonAction {
         }
     }
 
-    override onSendToPlugin(ev: SendToPluginEvent<JsonValue, ActionSettings>): Promise<void> | void {
+    override onSendToPlugin(ev: SendToPluginEvent<JsonValue, IncrementActionSettings>): Promise<void> | void {
         streamDeck.logger.debug("Brightness Down action received message from PI", ev);
         sendLightsToUI(ev);
     }
 
     override onDidReceiveSettings(ev: DidReceiveSettingsEvent<JsonObject>): Promise<void> | void {
         const prevSelected = (this.currentSettings?.selectedLights ?? []) as Array<string>;
-        const newSelected = (ev.payload.settings?.selectedLights ?? []) as Array<string>;
+        const settings = getIncrementActionSettings(ev.payload.settings);
+        const newSelected = settings.selectedLights;
         const diff = newSelected.find(light => !prevSelected.includes(light)) ?? prevSelected.find(light => !newSelected.includes(light));
         if (diff) {
             flashLight(diff, 2);
         }
-        const increment = (ev.payload.settings?.increments ?? 10) as number;
-        ev.action.setTitle(ev.payload.settings?.showOnIcon ? `-${increment}%` : "");
-        this.currentSettings = ev.payload.settings as ActionSettings;
+        ev.action.setTitle(settings.showOnIcon ? `-${settings.increments}%` : "");
+        this.currentSettings = settings;
     }
 }
 

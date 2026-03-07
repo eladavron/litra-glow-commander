@@ -1,18 +1,22 @@
 import streamDeck, { action, DidReceiveSettingsEvent, JsonObject, JsonValue, KeyDownEvent, SendToPluginEvent, SingletonAction, WillAppearEvent } from "@elgato/streamdeck";
 import { flashLight, getLightBySerialNumber, sendLightsToUI } from "../global";
 import { turnOn, turnOff, isOn } from "litra";
-import { ActionSettings } from "../settings";
+import { ActionSettings, getActionSettings } from "../settings";
 
 @action({ UUID: "com.eladavron.litra-glow-commander.toggle" })
 export class ToggleAction extends SingletonAction {
     currentSettings!: ActionSettings;
 
-    override onWillAppear(ev: WillAppearEvent): void | Promise<void> {
+    override async onWillAppear(ev: WillAppearEvent): Promise<void> {
         streamDeck.logger.debug("Toggle action will appear", ev);
         //Determine current state of selected lights
-        const settings = ev.payload.settings;
-        this.currentSettings = settings as ActionSettings;
-        const selectedLights = settings.selectedLights as Array<string>;
+        const settings = getActionSettings(ev.payload.settings);
+        if (JSON.stringify(ev.payload.settings ?? {}) !== JSON.stringify(settings)) {
+            await ev.action.setSettings(settings);
+        }
+
+        this.currentSettings = settings;
+        const selectedLights = settings.selectedLights;
         const allOn = selectedLights?.every(light => {
             const lightDevice = getLightBySerialNumber(light);
             if (!lightDevice) return true; //If a light isn't connected, ignore its status
@@ -26,8 +30,8 @@ export class ToggleAction extends SingletonAction {
 
     override async onKeyDown(ev: KeyDownEvent): Promise<void> {
         streamDeck.logger.debug("Toggle action key down", ev);
-        const settings = ev.payload.settings;
-        const selectedLights = settings.selectedLights as Array<string>;
+        const settings = getActionSettings(ev.payload.settings);
+        const selectedLights = settings.selectedLights;
         for (const selectedLight of selectedLights) {
             const light = getLightBySerialNumber(selectedLight);
             if (!light) {
@@ -48,7 +52,8 @@ export class ToggleAction extends SingletonAction {
     override onDidReceiveSettings(ev: DidReceiveSettingsEvent<JsonObject>): Promise<void> | void {
         //Determine which light was selected
         const prevSelected = (this.currentSettings?.selectedLights ?? []) as Array<string>;
-        const newSelected = (ev.payload.settings?.selectedLights ?? []) as Array<string>;
+        const settings = getActionSettings(ev.payload.settings);
+        const newSelected = settings.selectedLights;
         const diff = newSelected.find(light => !prevSelected.includes(light)) ?? prevSelected.find(light => !newSelected.includes(light));
         if (diff) {
             //Flash light
@@ -56,7 +61,7 @@ export class ToggleAction extends SingletonAction {
         }
 
         //Finally, update settings
-        this.currentSettings = ev.payload.settings as ActionSettings;
+        this.currentSettings = settings;
     }
 }
 
