@@ -1,11 +1,16 @@
 
 # Changelog
 
-## v1.0.0.03
+## v1.0.0.3
+
+### Added
+
+- Added "Light On" and "Light Off" actions (as opposed to just "Toggle" which just flips the state)
 
 ### Fixed
 
 - Fixed compatibility with StreamDeck plugin manifest V3
+- Fixed a bug where the light toggle would base its new state based on when the button was pressed, causing issues with multi-action buttons.
 
 ## v1.0.0.2
 

@@ -6,8 +6,12 @@ import { TemperatureDown } from "./actions/temp_down";
 import { TemperatureUp } from "./actions/temp_up";
 import { SetTemperature } from "./actions/set_temp";
 import { SetBrightness } from "./actions/set_brightness";
+import { LightOffAction } from "./actions/light-off";
+import { LightOnAction } from "./actions/light-on";
 
 streamDeck.actions.registerAction(new ToggleAction());
+streamDeck.actions.registerAction(new LightOffAction());
+streamDeck.actions.registerAction(new LightOnAction());
 streamDeck.actions.registerAction(new BrightnessUpAction());
 streamDeck.actions.registerAction(new BrightnessDownAction());
 streamDeck.actions.registerAction(new TemperatureDown());

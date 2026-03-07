@@ -1,6 +1,6 @@
 {
 	"Name": "Litra Glow Commander",
-	"Version": "1.0.0.2",
+	"Version": "1.0.0.3",
 	"Author": "Elad Avron",
 	"UUID": "com.eladavron.litra-glow-commander",
 	"URL": "https://github.com/eladavron/litra-glow-commander",
@@ -27,6 +27,38 @@
 				},
 				{
 					"Image": "imgs/actions/litra_glow_on",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Light Off",
+			"UUID": "com.eladavron.litra-glow-commander.light-off",
+			"Icon": "imgs/actions/toggle_outline",
+			"Tooltip": "Turns off the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/light-off",
+					"TitleAlignment": "middle"
+				}
+			]
+		},
+		{
+			"Name": "Light On",
+			"UUID": "com.eladavron.litra-glow-commander.light-on",
+			"Icon": "imgs/actions/toggle_outline",
+			"Tooltip": "Turns on the selected Litra Glow light(s).",
+			"PropertyInspectorPath": "ui/select-lights.html",
+			"Controllers": [
+				"Keypad"
+			],
+			"States": [
+				{
+					"Image": "imgs/actions/light-on",
 					"TitleAlignment": "middle"
 				}
 			]
